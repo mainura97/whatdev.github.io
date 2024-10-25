@@ -2,6 +2,8 @@
 import Base from "../layouts/Base.astro";
 
 const title = 'devWhat';
+
+const postAll = await Astro.glob('./posts/*.md');
 ---
 
 <Base pageTitle={title}>
@@ -10,6 +12,25 @@ const title = 'devWhat';
 			<div class="hero-text">
 				<h1>Bracket Pieces of Code</h1>
 				<p>Updates about Astro,Node.js and Express.</p>
+			</div>
+		</section>
+		<section id="post">
+			<h2>Latest</h2>
+			<div class="latest">
+				{
+					postAll.map((post) => 
+						<div class="card">
+							<div class="cover">
+								<img src={post.frontmatter.cover} alt="what" />
+							</div>
+							<div class="sub-card">
+								<a href={post.url}>
+									<h2>{post.frontmatter.title}</h2>
+								</a>
+							</div>
+						</div>
+					)
+				}
 			</div>
 		</section>
 	</div>
