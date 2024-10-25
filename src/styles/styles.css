@@ -61,6 +61,8 @@ header {
 main {
     height: 100vh;
     font-family: 'Merriweather',sans-serif;
+    padding: 10px 0;
+    margin: 10px 0;
 }
 
 #about {
