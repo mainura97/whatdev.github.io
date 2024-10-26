@@ -1,16 +1,37 @@
 ---
+import Base from "../layouts/Base.astro"
 
+const title = 'devWhat'
+
+const postAll = await Astro.glob('./posts/*.md');
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base pageTitle={title}>
+	<div class="index">
+		<section id="hero">
+			<div class="hero-text">
+				<h1 class="heading">Bracket Pieces of Code</h1>
+				<p>Updates about Astro,Node.js and Express.</p>
+			</div>
+		</section>
+		<section id="post">
+			<h2 class="heading">Latest</h2>
+			<div class="boxCard">
+				{
+					postAll.map((post) => 
+						<div class="card">
+							<div class="cover">
+								<img src={post.frontmatter.cover} alt="As" />
+							</div>
+							<div class="sub-card">
+								<a href={post.url}>
+									<h2 class="heading">{post.frontmatter.title}</h2>
+								</a>
+							</div>
+						</div>
+					)
+				}
+			</div>
+		</section>
+	</div>
+</Base>

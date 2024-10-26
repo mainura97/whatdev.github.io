@@ -1,0 +1,22 @@
+---
+import Base from "./Base.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Base pageTitle={frontmatter.title}>
+    <div id="markdown">
+        <div class="frontmatter">
+            <div class="boxDate">
+                
+            </div>
+            <div class="boxFront">
+                <h1>{frontmatter.title}</h1>
+                <p>{frontmatter.pubDate}</p>
+            </div>
+        </div>
+        <div class="markdown-ctn">
+            <slot />
+        </div>
+    </div>
+</Base>
